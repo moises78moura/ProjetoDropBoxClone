@@ -32,26 +32,7 @@ class DropBoxController{
     connectFirebase(){
           // Your web app's Firebase configuration
         var firebaseConfig = {
-            apiKey: "AIzaSyD2ZRMNAzs7IO-wEDxT3hSK3HexxPMbEkM",
-            authDomain: "dropbox-clone-e169b.firebaseapp.com",
-            databaseURL: "https://dropbox-clone-e169b.firebaseio.com",
-            projectId: "dropbox-clone-e169b",
-            storageBucket: "dropbox-clone-e169b.appspot.com",
-            messagingSenderId: "218240587286",
-            appId: "1:218240587286:web:30f3eee86fa204b2"
-        };
-        // firebase.initializeApp(firebaseConfig);
-         // Your web app's Firebase configuration
-      // Your web app's Firebase configuration
-        // var firebaseConfig = {
-        //     apiKey: "AIzaSyCGEnH233nrV0DWaAHTEMXWjJQVAu80oMY",
-        //     authDomain: "dropbox2-99dd3.firebaseapp.com",
-        //     databaseURL: "https://dropbox2-99dd3.firebaseio.com",
-        //     projectId: "dropbox2-99dd3",
-        //     storageBucket: "",
-        //     messagingSenderId: "69608392756",
-        //     appId: "1:69608392756:web:bb00aeb1228b0d13"
-        // };
+          };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
     }
