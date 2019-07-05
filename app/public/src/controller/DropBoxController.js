@@ -31,8 +31,7 @@ class DropBoxController{
 
     connectFirebase(){
           // Your web app's Firebase configuration
-        var firebaseConfig = {
-          };
+        var firebaseConfig = {};
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
     }
@@ -158,7 +157,7 @@ class DropBoxController{
 
         li.innerHTML = `${this.getFileIconView(file)}
         <div class="name text-center">${file.name}</div>`;
-
+        this.initEventsLi(li);
         return li;
     }
 
@@ -332,6 +331,53 @@ class DropBoxController{
                 let data = snapshotItem.val();
                 this.listFilesEl.appendChild(this.getFileView(data,key));
             });
+        });
+    }
+
+    initEventsLi(li){
+        li.addEventListener('click',event=>{
+
+            if(event.shiftKey){
+                let firstLi = this.listFilesEl.querySelector('.selected');
+                console.log('<<< firstLi >>>', firstLi);
+
+                if(firstLi){
+
+                    let indexStart;
+                    let indexEnd;
+                    
+                    let lista = li.parentElement.childNodes;
+
+                    lista.forEach((el, index)=>{
+                        if(firstLi === el){
+                            indexStart = index
+                        }
+                        if(li === el){
+                            indexEnd = index;
+                        }
+
+                    });
+
+                    console.log('<<< indexStart >>>', indexStart);
+                    console.log('<<< indexEnd >>>', indexStart);
+                    let index = [indexStart, indexEnd].sort();
+
+                    lista.forEach((el, i)=>{
+                        if(i >= index[0] && i <= index[1]){
+                            el.classList.add('selected');
+                        }
+                    });
+                    return true;
+                }
+            }
+
+            if(!event.ctrlKey){
+                this.listFilesEl.querySelectorAll('li.selected').forEach(el =>{
+                    el.classList.remove('selected');
+                });
+            }
+
+            li.classList.toggle('selected');
         });
     }
 
